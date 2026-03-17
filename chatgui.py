@@ -58,10 +58,24 @@ def getResponse(ints, intents_json):
             break
     return result
 
+import difflib
+
 def chatbot_response(msg):
     ints = predict_class(msg, model)
-    res = getResponse(ints, intents)
-    return res
+    if ints and float(ints[0]['probability']) >= 0.7:
+        res = getResponse(ints, intents)
+        return res
+    else:
+        # Get all patterns from intents.json
+        all_patterns = []
+        for intent in intents['intents']:
+            all_patterns.extend(intent['patterns'])
+            
+        # Find closest match
+        closest = difflib.get_close_matches(msg, all_patterns, n=1, cutoff=0.4)
+        if closest:
+            return f"Sorry, I didn't understand that. Did you mean: '{closest[0]}'?"
+        return "Sorry, I didn't understand that."
 
 
 #Creating GUI with tkinter
@@ -80,6 +94,9 @@ def send():
     
         res = chatbot_response(msg)
         ChatLog.insert(END, "Bot: " + res + '\n\n')
+        
+        with open('chat_log.txt', 'a', encoding='utf-8') as log_file:
+            log_file.write(f"User: {msg} | Bot: {res}\n")
             
         ChatLog.config(state=DISABLED)
         ChatLog.yview(END)
