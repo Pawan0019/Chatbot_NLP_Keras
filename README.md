@@ -1,39 +1,46 @@
-# Chatbot_Using_NLTK_-_Keras
+# Chatbot Using NLTK & Keras
 
-This project demonstrates a simple chatbot using Python, TensorFlow/Keras, and natural language processing (NLP). It includes training a model to classify intents and generating responses based on user input.
+## Description
+A simple, interactive chatbot built using Python, Natural Language Processing (NLTK), and Deep Learning (Keras/TensorFlow). The bot classifies user inputs into predefined "intents" and responds intelligently through a desktop graphical user interface (GUI).
 
 ## Features
-- Train a neural network model using `intents.json`.
-- Interactive GUI with Tkinter.
-- Customizable intents for various applications.
+- Interactive desktop chat interface.
+- Natural Language Processing with NLTK for text preprocessing (tokenization, lemmatization).
+- Deep Learning model powered by Keras and TensorFlow.
+- Easily customizable intent dataset.
 
-## Files
-- `train_chatbot.py`: Script to train the chatbot model.
-- `chatgui.py`: Script to run the chatbot GUI.
-- `intents.json`: Intent definitions with patterns and responses.
-- `chatbot_model.h5`: Saved trained model.
-- `words.pkl` and `classes.pkl`: Preprocessed data for inference.
+## Tech Stack
+- **Python 3**
+- **NLTK** (Natural Language Toolkit)
+- **Keras** & **TensorFlow**
+- **Tkinter** (for the GUI)
 
-## Setup and Usage
+## How It Works
+1. **Data Processing:** The application reads `intents.json`, which contains patterns (user messages) and corresponding responses. It tokenizes and lemmatizes the text to understand the base words.
+2. **Model Training:** A neural network (`train_chatbot.py`) is trained on this data to classify which "intent" a user's message belongs to.
+3. **Inference:** When you type a message in the GUI (`chatgui.py`), the trained model predicts the intent and randomly picks an appropriate response from `intents.json`.
 
-### Prerequisites
-- Python 3.x
-- Install dependencies:
-  ```bash
-  pip install -r requirements.txt
-  ```
-Train the Model
-Run the training script:
+## How to Run
 
-```bash
-python train_chatbot.py
-```
-Run the Chatbot
-Launch the GUI:
+1. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```bash
-python chatgui.py
-```
-## License
+2. **Train the Model:**
+   *(Note: You must run this command whenever you update `intents.json`)*
+   ```bash
+   python train_chatbot.py
+   ```
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/Pawan0019/Chatbot_Using_NLTK_-_Keras/blob/main/LICENSE) file for details.
+3. **Start the Chatbot:**
+   ```bash
+   python chatgui.py
+   ```
+
+## Example Input/Output
+**User:** Hello!  
+**Bot:** Hi! It's great to see you. What's on your mind?  
+
+**User:** Can you tell me a joke?  
+**Bot:** Why did the scarecrow win an award? Because he was outstanding in his field!
