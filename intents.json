@@ -1,73 +1,324 @@
-{"intents": [
-        {"tag": "greeting",
-         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
-         "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
-         "context": [""]
-        },
-        {"tag": "goodbye",
-         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
-         "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
-         "context": [""]
-        },
-        {"tag": "thanks",
-         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
-         "responses": ["Happy to help!", "Any time!", "My pleasure"],
-         "context": [""]
-        },
-        {"tag": "noanswer",
-         "patterns": [],
-         "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
-         "context": [""]
-        },
-        {"tag": "options",
-         "patterns": ["How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered"],
-         "responses": ["I can guide you through Adverse drug reaction list, Blood pressure tracking, Hospitals and Pharmacies", "Offering support for Adverse drug reaction, Blood pressure, Hospitals and Pharmacies"],
-         "context": [""]
-        },
-        {"tag": "adverse_drug",
-         "patterns": ["How to check Adverse drug reaction?", "Open adverse drugs module", "Give me a list of drugs causing adverse behavior", "List all drugs suitable for patient with adverse reaction", "Which drugs dont have adverse reaction?" ],
-         "responses": ["Navigating to Adverse drug reaction module"],
-         "context": [""]
-        },
-        {"tag": "blood_pressure",
-         "patterns": ["Open blood pressure module", "Task related to blood pressure", "Blood pressure data entry", "I want to log blood pressure results", "Blood pressure data management" ],
-         "responses": ["Navigating to Blood Pressure module"],
-         "context": [""]
-        },
-        {"tag": "blood_pressure_search",
-         "patterns": ["I want to search for blood pressure result history", "Blood pressure for patient", "Load patient blood pressure result", "Show blood pressure results for patient", "Find blood pressure results by ID" ],
-         "responses": ["Please provide Patient ID", "Patient ID?"],
-         "context": ["search_blood_pressure_by_patient_id"]
-        },
-        {"tag": "search_blood_pressure_by_patient_id",
-         "patterns": [],
-         "responses": ["Loading Blood pressure result for Patient"],
-         "context": [""]
-        },
-        {"tag": "pharmacy_search",
-         "patterns": ["Find me a pharmacy", "Find pharmacy", "List of pharmacies nearby", "Locate pharmacy", "Search pharmacy" ],
-         "responses": ["Please provide pharmacy name"],
-         "context": ["search_pharmacy_by_name"]
-        },
-        {"tag": "search_pharmacy_by_name",
-         "patterns": [],
-         "responses": ["Loading pharmacy details"],
-         "context": [""]
-        },
-        {"tag": "hospital_search",
-         "patterns": ["Lookup for hospital", "Searching for hospital to transfer patient", "I want to search hospital data", "Hospital lookup for patient", "Looking up hospital details" ],
-         "responses": ["Please provide hospital name or location"],
-         "context": ["search_hospital_by_params"]
-        },
-        {"tag": "search_hospital_by_params",
-         "patterns": [],
-         "responses": ["Please provide hospital type"],
-         "context": ["search_hospital_by_type"]
-        },
-        {"tag": "search_hospital_by_type",
-         "patterns": [],
-         "responses": ["Loading hospital details"],
-         "context": [""]
-        }
-   ]
+{
+        "intents": [
+                {
+                        "tag": "greetings",
+                        "patterns": [
+                                "Hello",
+                                "Hi there",
+                                "How is it going?",
+                                "Good morning",
+                                "Hey, what's up?",
+                                "Greetings"
+                        ],
+                        "responses": [
+                                "Hello there! How can I help you today?",
+                                "Hi! It's great to see you. What's on your mind?",
+                                "Greetings! How may I assist you?"
+                        ]
+                },
+                {
+                        "tag": "goodbye",
+                        "patterns": [
+                                "Bye",
+                                "See you later",
+                                "Goodbye",
+                                "I'm leaving now",
+                                "Talk to you later",
+                                "Take care"
+                        ],
+                        "responses": [
+                                "Goodbye! Have a great day.",
+                                "See you soon! Take care.",
+                                "Bye! Feel free to reach out if you need anything else."
+                        ]
+                },
+                {
+                        "tag": "asking_help",
+                        "patterns": [
+                                "Can you help me?",
+                                "I need some assistance",
+                                "Could you give me a hand?",
+                                "Help me please",
+                                "I have a problem",
+                                "I need support"
+                        ],
+                        "responses": [
+                                "Of course! What do you need help with?",
+                                "I'm here to help. What's the issue?",
+                                "I'd be glad to assist you. Please tell me more."
+                        ]
+                },
+                {
+                        "tag": "weather",
+                        "patterns": [
+                                "What is the weather like?",
+                                "Is it going to rain today?",
+                                "How is the weather outside?",
+                                "Tell me the weather forecast",
+                                "Do I need an umbrella?",
+                                "What's the temperature?"
+                        ],
+                        "responses": [
+                                "I can't check real-time weather right now, but you should look outside!",
+                                "I don't have access to live weather data at the moment, sorry.",
+                                "Please check your local weather app for the most accurate forecast."
+                        ]
+                },
+                {
+                        "tag": "time",
+                        "patterns": [
+                                "What time is it?",
+                                "Do you know the time?",
+                                "Tell me the current time",
+                                "Can you check the clock?",
+                                "What is the time now?",
+                                "Current time please"
+                        ],
+                        "responses": [
+                                "I don't have a clock built-in, please check your device's time.",
+                                "I believe your phone or computer has the most accurate time for your timezone.",
+                                "Unfortunately, I cannot tell you the exact time right now."
+                        ]
+                },
+                {
+                        "tag": "thanking",
+                        "patterns": [
+                                "Thank you",
+                                "Thanks a lot",
+                                "I appreciate it",
+                                "Thanks for your help",
+                                "Thank you very much",
+                                "That was helpful"
+                        ],
+                        "responses": [
+                                "You're very welcome!",
+                                "Happy to help!",
+                                "Anytime! Let me know if you need anything else."
+                        ]
+                },
+                {
+                        "tag": "bot_identity",
+                        "patterns": [
+                                "Who are you?",
+                                "What are you?",
+                                "Are you a human?",
+                                "Are you a robot?",
+                                "Tell me about yourself",
+                                "What is your identity?"
+                        ],
+                        "responses": [
+                                "I am a virtual assistant created to help you out.",
+                                "I'm an AI chatbot, here to assist with your questions.",
+                                "I am a digital assistant, always ready to chat!"
+                        ]
+                },
+                {
+                        "tag": "bot_name",
+                        "patterns": [
+                                "What is your name?",
+                                "Do you have a name?",
+                                "What should I call you?",
+                                "Who am I talking to?",
+                                "Tell me your name",
+                                "May I know your name?"
+                        ],
+                        "responses": [
+                                "You can call me Chatbot.",
+                                "I don't have a specific name, I'm just your friendly AI assistant.",
+                                "I am your personal virtual assistant."
+                        ]
+                },
+                {
+                        "tag": "bot_creator",
+                        "patterns": [
+                                "Who made you?",
+                                "Who created you?",
+                                "Who is your developer?",
+                                "Where did you come from?",
+                                "Who programmed you?",
+                                "Who is your boss?"
+                        ],
+                        "responses": [
+                                "I was created by a software developer.",
+                                "A team of human developers made me.",
+                                "I am the result of coding and programming by human creators."
+                        ]
+                },
+                {
+                        "tag": "bot_feelings",
+                        "patterns": [
+                                "How are you?",
+                                "How are you feeling?",
+                                "Are you doing well?",
+                                "How was your day?",
+                                "Are you okay?",
+                                "What is your mood?"
+                        ],
+                        "responses": [
+                                "I'm just a computer program, but I'm doing great! How about you?",
+                                "I don't have feelings, but I'm fully operational and ready to help.",
+                                "Feeling excited to assist you today!"
+                        ]
+                },
+                {
+                        "tag": "joke",
+                        "patterns": [
+                                "Tell me a joke",
+                                "Make me laugh",
+                                "Do you know any jokes?",
+                                "Say something funny",
+                                "I need a laugh",
+                                "Got a joke for me?"
+                        ],
+                        "responses": [
+                                "Why don't scientists trust atoms? Because they make up everything!",
+                                "Why did the scarecrow win an award? Because he was outstanding in his field!",
+                                "I told my computer I needed a break, and now it won't stop sending me Kit-Kat ads."
+                        ]
+                },
+                {
+                        "tag": "favorite_color",
+                        "patterns": [
+                                "What is your favorite color?",
+                                "Do you like colors?",
+                                "Which color do you prefer?",
+                                "Tell me your favorite color",
+                                "Do you have a preferred color?",
+                                "What color do you like?"
+                        ],
+                        "responses": [
+                                "I like all colors, but blue is quite nice in a digital world.",
+                                "I don't have eyes to see them, but I imagine green is very calming.",
+                                "As an AI, I don't have a favorite, but I appreciate the concept of colors!"
+                        ]
+                },
+                {
+                        "tag": "favorite_food",
+                        "patterns": [
+                                "What do you like to eat?",
+                                "What is your favorite food?",
+                                "Do you eat?",
+                                "Are you hungry?",
+                                "What's for dinner?",
+                                "Do you like pizza?"
+                        ],
+                        "responses": [
+                                "I mostly consume data and electricity!",
+                                "I don't eat, but I hear pizza is amazing.",
+                                "A nice cold glass of electricity sounds good right now."
+                        ]
+                },
+                {
+                        "tag": "hobbies",
+                        "patterns": [
+                                "What do you do for fun?",
+                                "Do you have hobbies?",
+                                "What are your interests?",
+                                "What do you do in your free time?",
+                                "Do you play games?",
+                                "Tell me your hobbies"
+                        ],
+                        "responses": [
+                                "I enjoy answering questions and processing text!",
+                                "Chatting with you is my favorite pastime.",
+                                "I spend my free time learning new patterns and words."
+                        ]
+                },
+                {
+                        "tag": "location",
+                        "patterns": [
+                                "Where are you?",
+                                "Where do you live?",
+                                "What is your location?",
+                                "Where are you located?",
+                                "What city are you in?",
+                                "Tell me where you are"
+                        ],
+                        "responses": [
+                                "I live inside servers and the internet.",
+                                "I am everywhere and nowhere, living in the cloud.",
+                                "My home is in the digital realm."
+                        ]
+                },
+                {
+                        "tag": "user_greeting_response",
+                        "patterns": [
+                                "I am good",
+                                "I'm fine",
+                                "Doing well",
+                                "I am doing great",
+                                "Everything is good",
+                                "I am okay"
+                        ],
+                        "responses": [
+                                "That's wonderful to hear!",
+                                "I'm glad you're doing well.",
+                                "Awesome! Let me know if you need anything."
+                        ]
+                },
+                {
+                        "tag": "good_morning",
+                        "patterns": [
+                                "Good morning to you",
+                                "Morning!",
+                                "Wake up",
+                                "Have a good morning",
+                                "It is morning",
+                                "Rise and shine"
+                        ],
+                        "responses": [
+                                "Good morning! I hope you have a fantastic day ahead.",
+                                "Morning! How can I make your day better?",
+                                "Good morning to you too!"
+                        ]
+                },
+                {
+                        "tag": "good_night",
+                        "patterns": [
+                                "Good night",
+                                "I am going to sleep",
+                                "Time for bed",
+                                "Have a good night",
+                                "See you tomorrow",
+                                "Sweet dreams"
+                        ],
+                        "responses": [
+                                "Good night! Sleep well.",
+                                "Sweet dreams! See you tomorrow.",
+                                "Have a restful night. Goodbye!"
+                        ]
+                },
+                {
+                        "tag": "compliment",
+                        "patterns": [
+                                "You are awesome",
+                                "You are smart",
+                                "I like you",
+                                "You are so helpful",
+                                "Great job",
+                                "You are the best"
+                        ],
+                        "responses": [
+                                "Thank you! I really appreciate that.",
+                                "You're too kind! I'm just doing my job.",
+                                "Thanks! I'm glad I could be of service."
+                        ]
+                },
+                {
+                        "tag": "capabilities",
+                        "patterns": [
+                                "What can you do?",
+                                "What are your features?",
+                                "Tell me what you can do",
+                                "What are your capabilities?",
+                                "How can you help?",
+                                "What is your purpose?"
+                        ],
+                        "responses": [
+                                "I can answer your questions, tell you jokes, and have casual conversations.",
+                                "I'm designed to chat with you and provide general information.",
+                                "I am a conversational AI, here to talk and assist with basic queries."
+                        ]
+                }
+        ]
 }
